@@ -39,7 +39,6 @@ const serverHandle = (req, res) => {
     if (blogResult) {
       blogResult.then(blogData => {
         if (blogData) {
-          console.log(3323232)
           res.end(JSON.stringify(blogData)) 
         }
       })
@@ -47,9 +46,13 @@ const serverHandle = (req, res) => {
     }
     
     
-    const userData = handleUser(req, res)
-    if (userData) {
-      res.end(JSON.stringify(userData))
+    const userResult = handleUser(req, res)
+    if (userResult) {
+      userResult.then(userData => {
+        if (userData) {
+          res.end(JSON.stringify(userData)) 
+        }
+      })
       return
     }
     res.writeHead(404, {

@@ -9,11 +9,18 @@ const blogUserRouter = (req, res) => {
     const username = req.body.username
     const password = req.body.password
     const result = login(username, password)
-    if (result) {
-      return new SuccessModel(result, '登录成功')
-    } else {
-      return new ErrorModel('账号密码错误')
-    }
+    return result.then((res) => {
+      if (res && res.username) {
+        return new SuccessModel(result, '登录成功')
+      } else {
+        return new ErrorModel('账号密码错误')
+      }
+    })
+    // if (result) {
+    //   return new SuccessModel(result, '登录成功')
+    // } else {
+    //   return new ErrorModel('账号密码错误')
+    // }
   }
   return false
 }
