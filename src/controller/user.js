@@ -5,7 +5,7 @@ const login = (username, password) => {
     select username, realname from users where username='${username}' and password='${password}'
   `
   return exec(sql).then((res) => {
-    console.log(res)
+    // console.log(res)
     return res[0]
   })
 }
