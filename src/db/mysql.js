@@ -15,7 +15,6 @@ const con = mysql.createConnection(
 
 con.connect()
 
-
 function exec(sql) {
   return new Promise((resolve, reject) => {
     con.query(sql, (err, result) => {

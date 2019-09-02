@@ -21,7 +21,6 @@ const handleBlog = (req, res) => {
     return result.then(detailData => {
       return new SuccessModel(detailData, 'success')
     })
-    console.log(detailData)
   }
   if (method == 'POST' && path == '/api/blog/new') {
     const blogData = req.body
